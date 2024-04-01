@@ -38,6 +38,50 @@ export default function Home() {
           priority
         />
       </div>
+      <div className="flex flex-row gap-7 w-full justify-center">
+        <input
+          type="number"
+          placeholder="0"
+          className="input input-bordered w-1/12"
+        />
+        <input
+          type="number"
+          placeholder="0"
+          className="input input-bordered w-1/12"
+        />
+        <input
+          type="number"
+          placeholder="0"
+          className="input input-bordered w-1/12"
+        />
+        <input
+          type="number"
+          placeholder="0"
+          className="input input-bordered w-1/12"
+        />
+        <input
+          type="number"
+          placeholder="0"
+          className="input input-bordered w-1/12"
+        />
+        <input
+          type="number"
+          placeholder="0"
+          className="input input-bordered w-1/12"
+        />
+        <input
+          type="number"
+          placeholder="0"
+          className="input input-bordered w-1/12"
+        />
+      </div>
+      <div className="flex flex-row gap-7 w-full justify-center">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
       <button className="btn">Nice Try</button>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
