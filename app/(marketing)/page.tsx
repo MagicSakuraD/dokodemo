@@ -6,10 +6,13 @@ import {
   SignIn,
   SignedOut,
   SignUpButton,
+  SignInButton,
+  SignedIn,
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -20,7 +23,7 @@ const Home = () => {
       <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">
         Learn, practice, and master music
       </h1>
-      <div>
+      <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
         <ClerkLoading>
           <Loader className="w-5 h-5 text-muted-foreground animate-spin" />
         </ClerkLoading>
@@ -32,11 +35,29 @@ const Home = () => {
               afterSignUpUrl="/learn"
             >
               <Button size="lg" variant={"secondary"} className="w-full">
-                开始
+                Get Started
               </Button>
             </SignUpButton>
+            <SignInButton
+              mode="modal"
+              afterSignInUrl="/learn"
+              afterSignUpUrl="/learn"
+            >
+              <Button size="lg" variant={"primaryOutline"} className="w-full">
+                I already have an account
+              </Button>
+            </SignInButton>
           </SignedOut>
-          <SignIn></SignIn>
+          <SignedIn>
+            <Button
+              size={"lg"}
+              variant={"secondary"}
+              className="w-full"
+              asChild
+            >
+              <Link href={"/learn"}>Continue Learning</Link>
+            </Button>
+          </SignedIn>
         </ClerkLoaded>
       </div>
     </div>
