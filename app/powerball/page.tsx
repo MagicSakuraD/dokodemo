@@ -28,7 +28,7 @@ function MyComponent() {
       </div>
       <div className="flex flex-row gap-7 w-full justify-center">
         {values.map((value, index) => (
-          <p key={index}>{Math.round((33 / 68) * (value - 1))}</p>
+          <p key={index}>{Math.round((32 / 68) * (value - 1)+1)}</p>
         ))}
       </div>
 
@@ -38,7 +38,7 @@ function MyComponent() {
           className="input input-bordered input-primary w-3/6"
           onChange={(event) => setLastValue(Number(event.target.value))}
         />
-        <p className="stat-value">{Math.round((16 / 25) * (lastValue - 1))}</p>
+        <p className="stat-value">{Math.round((15 / 25) * (lastValue - 1)+1)}</p>
       </div>
     </div>
   );
