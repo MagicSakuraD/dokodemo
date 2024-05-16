@@ -18,9 +18,7 @@ const LearnPage = () => {
       </StickyWrapper>
       <FeedWrapper>
         <Header title="Chinese" />
-        <div className="space-y-4">
-          <div className="h-[700px] bg-blue-500 w-full" />
-        </div>
+        <div className="space-y-4"></div>
       </FeedWrapper>
     </div>
   );

@@ -18,7 +18,7 @@ const UserProgress = ({
   hasActiveSubscription,
 }: Props) => {
   return (
-    <div>
+    <div className="">
       <Link href={"/courses"}>
         <Button variant={"ghost"}>
           <Image
