@@ -33,7 +33,7 @@ const UserProgress = ({
       <Link href={"/shop"}>
         <Button variant={"ghost"} className="text-orange-500">
           <Image
-            src="/points.svg"
+            src="/High Voltage.png"
             alt="Points"
             className="mr-2"
             width={28}
@@ -45,7 +45,7 @@ const UserProgress = ({
       <Link href={"/shop"}>
         <Button variant={"ghost"} className="text-rose-500">
           <Image
-            src="/points.svg"
+            src="/Red Heart.png"
             alt="Hearts"
             className="mr-2"
             width={22}
