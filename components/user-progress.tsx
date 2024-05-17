@@ -25,8 +25,8 @@ const UserProgress = ({
             src={activeCourse.imageSrc}
             alt={activeCourse.title}
             className="rounded-md border"
-            width={32}
-            height={32}
+            width={28}
+            height={28}
           />
         </Button>
       </Link>
@@ -36,8 +36,8 @@ const UserProgress = ({
             src="/High Voltage.png"
             alt="Points"
             className="mr-2"
-            width={28}
-            height={28}
+            width={24}
+            height={24}
           />
           {points}
         </Button>
