@@ -1,11 +1,17 @@
 import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "@react-three/drei";
+import {
+  TransformControls,
+  OrbitControls,
+  PivotControls,
+  Html,
+} from "@react-three/drei";
 
 const Geometry = () => {
   const torusRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
+  const sphereRef = useRef<THREE.Mesh>(null);
 
   useFrame((state, delta) => {
     if (torusRef.current && groupRef.current) {
@@ -15,7 +21,7 @@ const Geometry = () => {
   });
   return (
     <>
-      <OrbitControls />
+      <OrbitControls makeDefault />
       <directionalLight
         position={[1, 2, 3]}
         color={"#10b981"}
@@ -23,14 +29,38 @@ const Geometry = () => {
       />
       <ambientLight intensity={0.5} />
       <group ref={groupRef}>
-        <mesh scale={[0.5, 0.5, 0.5]} position-y={4}>
+        <mesh scale={[0.5, 0.5, 0.5]} position-y={4} ref={sphereRef}>
           <sphereGeometry args={[3, 32, 32]} />
-          <meshStandardMaterial color={"#7c3aed"} />
+          <meshToonMaterial color={"#7c3aed"} />
         </mesh>
-        <mesh ref={torusRef} position={[0, 1, 0]} rotation-x={0.5} scale={0.8}>
-          <torusKnotGeometry />
-          <meshToonMaterial args={[{ color: "#8b5cf6" }]} />
-        </mesh>
+        {sphereRef.current && (
+          <TransformControls
+            object={sphereRef.current as THREE.Object3D}
+            mode="translate"
+          />
+        )}
+
+        <PivotControls
+          anchor={[0, 0, 0]}
+          depthTest={false}
+          lineWidth={4}
+          axisColors={["#22c55e", "#3b82f6", "#f43f5e"]}
+          scale={50}
+          fixed={true}
+        >
+          <mesh
+            ref={torusRef}
+            position={[0, 1, 0]}
+            rotation-x={0.5}
+            scale={0.8}
+          >
+            <torusKnotGeometry />
+            <meshToonMaterial args={[{ color: "#8b5cf6" }]} />
+            <Html position={[1, 1, 0]} className="text-green-600">
+              THREE
+            </Html>
+          </mesh>
+        </PivotControls>
       </group>
     </>
   );
