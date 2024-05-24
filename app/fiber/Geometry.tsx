@@ -56,7 +56,10 @@ const Geometry = () => {
           >
             <torusKnotGeometry />
             <meshToonMaterial args={[{ color: "#8b5cf6" }]} />
-            <Html position={[1, 1, 0]} className="text-green-600">
+            <Html
+              position={[3, 3, 0]}
+              className="text-green-600 font-bold underline decoration-rose-500"
+            >
               THREE
             </Html>
           </mesh>
