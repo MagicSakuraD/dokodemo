@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import ReactFlow, {
   MiniMap,
   Controls,
@@ -22,7 +22,8 @@ import ReactFlow, {
   Panel,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { div, label } from "three/examples/jsm/nodes/Nodes.js";
+import ColorSelectorNode from "./CustomNodes/ColorSelectorNode";
+import TextUpdaterNode from "./CustomNodes/TextUpdaterNode";
 
 const initialNodes: Node[] = [
   {
@@ -75,6 +76,12 @@ const initialNodes: Node[] = [
     },
     position: { x: 200, y: 200 },
   },
+  {
+    id: "4",
+    type: "textUpdater",
+    position: { x: 300, y: 300 },
+    data: { value: 123 },
+  },
 ];
 const initialEdges = [
   { id: "e1-2", source: "1", target: "2", label: "build", type: "smoothstep" },
@@ -93,6 +100,9 @@ const nodeColor = (node: Node) => {
 };
 
 const FlowPage = () => {
+  // we define the nodeTypes outside of the component to prevent re-renderings
+  // you could also use useMemo inside the component
+  const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode }), []);
   const [variant, setVariant] = useState<BackgroundVariant>(
     BackgroundVariant.Dots
   );
@@ -108,13 +118,14 @@ const FlowPage = () => {
 
   return (
     <div className="container mx-auto">
-      <div style={{ width: "100vw", height: "100vh" }}>
+      <div style={{ height: "100vh" }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          nodeTypes={nodeTypes}
           defaultEdgeOptions={defaultEdgeOptions}
           fitView
         >
