@@ -6,6 +6,9 @@ import {
   OrbitControls,
   PivotControls,
   Html,
+  Text,
+  Float,
+  MeshReflectorMaterial,
 } from "@react-three/drei";
 
 const Geometry = () => {
@@ -58,6 +61,9 @@ const Geometry = () => {
             <meshToonMaterial args={[{ color: "#8b5cf6" }]} />
             <Html
               position={[3, 3, 0]}
+              center
+              distanceFactor={6}
+              occlude={[torusRef, sphereRef]}
               className="text-green-600 font-bold underline decoration-rose-500"
             >
               THREE
@@ -65,6 +71,22 @@ const Geometry = () => {
           </mesh>
         </PivotControls>
       </group>
+      <mesh position-y={-1} rotation-x={-Math.PI * 0.5} scale={7}>
+        <planeGeometry />
+        <MeshReflectorMaterial resolution={512} mirror={0.8} />
+      </mesh>
+      <Float speed={5} floatIntensity={2}>
+        <Text
+          color={"salmon"}
+          fontSize={1}
+          position-y={-2}
+          maxWidth={2}
+          textAlign="center"
+        >
+          k423, 3D Text
+          <meshNormalMaterial />
+        </Text>
+      </Float>
     </>
   );
 };

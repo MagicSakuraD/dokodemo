@@ -12,10 +12,6 @@ const CubePage = () => {
         <ambientLight intensity={0.1} />
         <directionalLight color="#dcfce7" position={[0, 0, 2]} />
         <Geometry />
-        <mesh position-y={-1} rotation-x={-Math.PI * 0.5} scale={7}>
-          <planeGeometry />
-          <meshToonMaterial color={"#7c3aed"} />
-        </mesh>
       </Canvas>
     </div>
   );
